@@ -16,7 +16,6 @@ RecyclerView rvStudent;
 TextView tvName, tvGrade;
 ImageView btAdd;
 StudentDBHelper db;
-//ImageView btEdit, btDelete;
 
 StudentAdapter studentAdapter;
 
@@ -26,15 +25,17 @@ StudentAdapter studentAdapter;
         setContentView(R.layout.activity_main);
         initViews();
         clickHandler();
-
         db = new StudentDBHelper(MainActivity.this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         studentAdapter = new StudentAdapter(db.getAllStudentList(),db);
         DividerItemDecoration dv = new DividerItemDecoration(this,RecyclerView.VERTICAL);
         rvStudent.addItemDecoration(dv);
+     rvStudent.setLayoutManager(new LinearLayoutManager(this));
         rvStudent.setAdapter(studentAdapter);
-        rvStudent.setLayoutManager(new LinearLayoutManager(this));
-
-
     }
 
     void initViews(){
@@ -42,9 +43,6 @@ StudentAdapter studentAdapter;
         btAdd = findViewById(R.id.btAdd);
         tvName = findViewById(R.id.tvName);
         tvGrade = findViewById(R.id.tvGrade);
-//        btEdit = findViewById(R.id.btEdit);
-//        btDelete = findViewById(R.id.btDelete);
-
     }
 
     public void clickHandler(){

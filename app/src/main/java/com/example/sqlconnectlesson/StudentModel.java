@@ -1,13 +1,13 @@
 package com.example.sqlconnectlesson;
 
-public class StudentModal {
+public class StudentModel {
     private int student_id;
     private String student_name;
     private String student_grade;
     private String student_room;
     private String student_father;
 
-    public StudentModal(int student_id, String student_name, String student_grade, String student_room, String student_father) {
+    public StudentModel(int student_id, String student_name, String student_grade, String student_room, String student_father) {
         this.student_id = student_id;
         this.student_name = student_name;
         this.student_grade = student_grade;

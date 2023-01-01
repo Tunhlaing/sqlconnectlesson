@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditStudent">
+    <EditText
+        android:id="@+id/etStudentNameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Edit Student Name"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etStudentGradeEdit"
+
+        />
+
+    <EditText
+        android:id="@+id/etStudentGradeEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Edit Student Grade"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etStudentRoomNoEdit" />
+
+    <EditText
+        android:id="@+id/etStudentRoomNoEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Edit Student Room No"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etStudentGradeEdit"/>
+
+    <RadioButton
+        android:id="@+id/rbMaleEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Male"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etStudentRoomNoEdit" />
+
+    <RadioButton
+        android:id="@+id/rbFemaleEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Female"
+        app:layout_constraintTop_toBottomOf="@+id/etStudentRoomNoEdit"
+        app:layout_constraintStart_toEndOf="@id/rbMaleEdit"/>
+
+    <EditText
+        android:id="@+id/etStudentFatherEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Edit Father Name of Student"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rbFemaleEdit"/>
+
+    <Button
+        android:id="@+id/btEditStudent"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Edit Student"
+        app:layout_constraintTop_toBottomOf="@id/etStudentFatherEdit"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

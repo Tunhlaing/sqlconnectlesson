@@ -70,10 +70,10 @@ public class StudentDBHelper extends SQLiteOpenHelper {
         }
 
     }
-    ArrayList<StudentModal> getAllStudentList(){
+    ArrayList<StudentModel> getAllStudentList(){
     SQLiteDatabase db = this.getReadableDatabase();
     Cursor cursor = db.rawQuery("SELECT * FROM " + STUDENT_TABLE, null);
-        ArrayList<StudentModal>  studentModalArrayList = new ArrayList<>();
+        ArrayList<StudentModel>  studentModalArrayList = new ArrayList<>();
         if(cursor.moveToFirst()){
         while (!cursor.isAfterLast()){
 
@@ -82,7 +82,7 @@ public class StudentDBHelper extends SQLiteOpenHelper {
             @SuppressLint("Range") String student_grade = cursor.getString(cursor.getColumnIndex("student_grade"));
             @SuppressLint("Range") String student_room = cursor.getString(cursor.getColumnIndex("student_room"));
             @SuppressLint("Range") String student_father = cursor.getString(cursor.getColumnIndex("student_father"));
-            StudentModal studentModal = new StudentModal(student_id,student_name,student_grade,student_room,student_father);
+            StudentModel studentModal = new StudentModel(student_id,student_name,student_grade,student_room,student_father);
             studentModalArrayList.add(studentModal);
             cursor.moveToNext();
         }
@@ -93,9 +93,25 @@ public class StudentDBHelper extends SQLiteOpenHelper {
         return studentModalArrayList;
     }
     boolean deleteStudent(int student_id){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db =  getWritableDatabase();
         try {
             db.delete(STUDENT_TABLE,"student_id=" + student_id,null);
+            db.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+            return false;
+        }
+
+    }
+    boolean updateStudent(int student_id, String update_student_name, String update_student_grade) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("student_name", update_student_name);
+        cv.put("student_grade", update_student_grade);
+        try {
+            db.update(STUDENT_TABLE, cv, "student_id=" + student_id, null);
             db.close();
             return true;
         } catch (Exception e) {

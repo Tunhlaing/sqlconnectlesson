@@ -23,12 +23,16 @@ public class AddStudent extends AppCompatActivity {
 
         btAddStudent.setOnClickListener(view -> {
 
-            myDB.addNewStudent(etStudentName.getText().toString(),
+            if (myDB.addNewStudent(etStudentName.getText().toString(),
                     etStudentGrade.getText().toString(),
                     etStudentRoomNo.getText().toString(),
-                    etStudentFather.getText().toString());
-            Intent i = new Intent(AddStudent.this,MainActivity.class);
-            startActivity(i);
+                    etStudentFather.getText().toString())) {
+                Utils.showToast(this,"Added Student");
+                finish();
+
+            } else {
+                Utils.showToast(this,"please Try Again");
+            }
         });
     }
 
